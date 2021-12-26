@@ -39,3 +39,9 @@ testem.log
 Thumbs.db
 
 .vercel
+
+apps/node-backend/node_modules/
+
+apps/node-backend/package-lock.json
+
+yarn.lock

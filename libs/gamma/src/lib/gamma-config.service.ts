@@ -12,7 +12,7 @@ export interface GammaConfiguration {
 
 export const DEFAULT_GAMMA_CONFIGURATION:GammaConfiguration = {
     hideTimestamp: false,
-    tickerDisplayThreshold: 50,
+    tickerDisplayThreshold: 0,
     disableSmoother: false,
     maxDanmakuNumber: 100
 }

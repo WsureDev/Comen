@@ -42,6 +42,14 @@ class CompatibleRoutes implements CanActivate {
             id: +route.params.id
           }
         });
+      case 'player':
+        return this.router.createUrlTree(['/', 'bvPlayer'], {
+          queryParams: {
+            ...route.queryParams,
+            p: 'bilibili',
+            id: +route.params.id
+          }
+        });
     }
     throw new Error('NOT EXPECTED ROUTE');
   }
@@ -66,6 +74,10 @@ class CompatibleRoutes implements CanActivate {
         path: 'comment',
         loadChildren: () => import('./pages/comment/comment.module').then(m => m.CommentModule)
       },
+      {
+        path: 'bvPlayer',
+        loadChildren: () => import('./pages/bvPlayer/player.module').then(m => m.BvPlayerModule)
+      },
       /** (bilichat) compatible routes  */
       {
         path: 'gkd/:id',
@@ -81,6 +93,10 @@ class CompatibleRoutes implements CanActivate {
         children: []
       }, {
         path: 'acfun/:id',
+        canActivate: [CompatibleRoutes],
+        children: []
+      }, {
+        path: 'player/:id',
         canActivate: [CompatibleRoutes],
         children: []
       }

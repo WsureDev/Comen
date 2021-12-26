@@ -357,10 +357,36 @@
           }
         }
       }
+    },
+    "player": {
+      "projectType": "library",
+      "root": "libs/player",
+      "sourceRoot": "libs/player/src",
+      "prefix": "comen",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/player/src/**/*.ts",
+              "libs/player/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/player"],
+          "options": {
+            "jestConfig": "libs/player/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "f669854e-d7bd-49e2-8159-9dbf828d30a4"
   },
   "schematics": {
     "@nrwl/angular": {
@@ -380,6 +406,9 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
     }
   },
   "defaultProject": "core"

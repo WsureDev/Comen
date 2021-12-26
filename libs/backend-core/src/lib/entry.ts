@@ -6,7 +6,7 @@
 import { CacheModule, Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { BackendCoreModule } from './backend-core.module';
-import 'reflect-metadata'; import * as redisStore from 'cache-manager-redis';
+import 'reflect-metadata'; import * as memoryStore from 'cache-manager-memory-store';
 import * as fsStore from 'cache-manager-fs';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { tmpdir } from 'os';
@@ -33,7 +33,7 @@ function initModuleDependencies(options: ComenBackendOptions) {
         useFactory: () => {
             if (process.env.REDIS_HOST) {
                 return {
-                    store: redisStore,
+                    store: memoryStore,
                     host: process.env.REDIS_HOST,
                     port: parseInt(process.env.REDIS_PORT ?? "6379"),
                     auth_pass: process.env.REDIS_AUTH,

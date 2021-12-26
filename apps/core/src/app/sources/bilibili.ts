@@ -223,12 +223,13 @@ export class BilibiliSource implements MessageSource {
                                 case 'COMBO_SEND':
                                     // console.log(msg);
                                     break;
+                                case 'SUPER_CHAT_MESSAGE':
                                 case 'SUPER_CHAT_MESSAGE_JPN':
                                     observer.next({
                                         type: 'paid',
                                         avatar: msg.data.user_info.face,
                                         username: msg.data.user_info.uname,
-                                        content: config.useJapaneseSC
+                                        content: config.useJapaneseSC && msg.data.message_jpn
                                             ? msg.data.message_jpn
                                             : msg.data.message,
                                         itemInfo: `CN¥${msg.data.price}`,
@@ -434,6 +435,18 @@ type BilibiliMsg =
       }
     | {
           cmd: 'SUPER_CHAT_MESSAGE_JPN';
+          data: {
+              uid: number;
+              user_info: {
+                  uname: string;
+                  face: string;
+              };
+              price: number;
+              message_jpn: string;
+              message: string;
+          };
+      }| {
+          cmd: 'SUPER_CHAT_MESSAGE';
           data: {
               uid: number;
               user_info: {

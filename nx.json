@@ -24,6 +24,7 @@
     "knexy": { "tags": [] },
     "isomorphic-danmaku": { "tags": [] },
     "isomorphic-danmaku-server": { "tags": [] },
-    "common": { "tags": [] }
+    "common": { "tags": [] },
+    "player": { "tags": [] }
   }
 }
